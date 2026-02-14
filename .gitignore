@@ -1,0 +1,25 @@
+# ...existing code...
+# Ignorar JDK portable y correos simulados
+.jdk/
+sent-emails/
+
+# Maven target
+target/
+
+# IntelliJ
+.idea/
+*.iml
+
+# logs
+*.log
+
+# env
+.env
+
+# node
+node_modules/
+
+# OS
+Thumbs.db
+.DS_Store
+
