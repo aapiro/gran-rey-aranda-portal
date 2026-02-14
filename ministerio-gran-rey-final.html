@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministerio Gran Rey - Bienvenidos a Casa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ==================== RESET Y VARIABLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colores oficiales del Brand Book */
+            --primary-orange: #F39F18;
+            --prussian-blue: #003153;
+            --prussian-blue-light: #253D5B;
+            --y-in-mn-blue: #374C68;
+            --spanish-blue: #0070B8;
+            --royal-blue-dark: #14184E;
+            --aero: #7BB1D3;
+            
+            /* Colores funcionales */
+            --primary: var(--primary-orange);
+            --secondary: var(--prussian-blue);
+            --accent: var(--spanish-blue);
+            --dark-bg: var(--prussian-blue);
+            --medium-bg: var(--prussian-blue-light);
+            --light-bg: #F5F7FA;
+            --warm-white: #FDFBF7;
+            --white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-medium: #4A5568;
+            --text-light: #A0AEC0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            
+            /* Tipografías del Brand Book */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            /* Espaciado */
+            --section-padding: 80px 20px;
+            --container-max: 1200px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--warm-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==================== NAVBAR ==================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 15px var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-text .primary {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-text .secondary {
+            color: #9CA3AF;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        .sede-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--light-bg);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .sede-selector:hover {
+            border-color: var(--primary);
+        }
+
+        .sede-selector label {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .sede-selector select {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 15px;
+            background: var(--white);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            cursor: pointer;
+            outline: none;
+            font-weight: 600;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, rgba(0, 49, 83, 0.75), rgba(55, 76, 104, 0.70)),
+                        url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 49, 83, 0.3) 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 7vw, 4.5rem);
+            color: var(--white);
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+            color: var(--warm-white);
+            margin-bottom: 45px;
+            font-weight: 300;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 45px;
+            border-radius: 30px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 5px 25px rgba(243, 159, 24, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(243, 159, 24, 0.5);
+            background: #E08D0F;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 3px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* ==================== SECCIÓN NUEVO AQUÍ ==================== */
+        .nuevo-aqui {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 60px;
+            position: relative;
+            font-weight: 800;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 20px auto 0;
+            border-radius: 3px;
+        }
+
+        .info-cards {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .info-card {
+            background: var(--light-bg);
+            padding: 45px 35px;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .info-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .info-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(243, 159, 24, 0.3);
+        }
+
+        .info-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin-bottom: 18px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-card p {
+            color: var(--text-medium);
+            line-height: 1.9;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ==================== SECCIÓN PREDICACIONES ==================== */
+        .predicaciones {
+            padding: var(--section-padding);
+            background: var(--light-bg);
+        }
+
+        .video-grid {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: all 0.4s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .video-thumbnail::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 49, 83, 0.4), rgba(243, 159, 24, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail::before {
+            opacity: 1;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(243, 159, 24, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-card:hover .play-icon {
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 5px 25px rgba(243, 159, 24, 0.6);
+        }
+
+        .video-info {
+            padding: 25px;
+        }
+
+        .video-info h3 {
+            font-family: var(--font-heading);
+            color: var(--secondary);
+            margin-bottom: 12px;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .video-info p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ==================== SECCIÓN COMUNIDAD (NUEVA) ==================== */
+        .comunidad {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+
+        .comunidad-content {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .comunidad-img {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 280px;
+            position: relative;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .comunidad-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .comunidad-img:hover img {
+            transform: scale(1.08);
+        }
+
+        .comunidad-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 49, 83, 0.8) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* ==================== SECCIÓN LMS ==================== */
+        .lms {
+            padding: var(--section-padding);
+            background: var(--light-bg);
+        }
+
+        .lms-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .nivel-group {
+            margin-bottom: 60px;
+        }
+
+        .nivel-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-weight: 800;
+        }
+
+        .nivel-badge {
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 3px 15px rgba(243, 159, 24, 0.3);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 35px 28px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card h4 {
+            font-family: var(--font-heading);
+            color: var(--secondary);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .course-card p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+
+        .course-duration {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* ==================== SECCIÓN ONG ==================== */
+        .ong {
+            padding: var(--section-padding);
+            background: linear-gradient(135deg, rgba(123, 177, 211, 0.08), rgba(243, 159, 24, 0.05));
+        }
+
+        .ong-container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .ong-intro {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .ong-intro h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .ong-intro p {
+            font-size: 1.15rem;
+            color: var(--text-medium);
+            line-height: 1.9;
+        }
+
+        .form-container {
+            background: var(--white);
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(243, 159, 24, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            padding: 17px;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(243, 159, 24, 0.4);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--dark-bg);
+            color: var(--white);
+            padding: 70px 20px 25px;
+        }
+
+        .footer-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 45px;
+        }
+
+        .footer-section h3 {
+            font-family: var(--font-heading);
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .footer-section p,
+        .footer-section address {
+            color: var(--text-light);
+            line-height: 1.9;
+            font-style: normal;
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 270px;
+            background: var(--medium-bg);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 2.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(243, 159, 24, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 35px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+        }
+
+        /* ==================== ANIMACIONES ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+
+            .hero {
+                margin-top: 150px;
+                height: 75vh;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .form-container {
+                padding: 30px 25px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .comunidad-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ==================== MENSAJE DE ÉXITO ==================== */
+        .success-message {
+            position: fixed;
+            top: 110px;
+            right: 20px;
+            background: linear-gradient(135deg, #52c41a, #73d13d);
+            color: var(--white);
+            padding: 22px 35px;
+            border-radius: 18px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            z-index: 2000;
+            display: none;
+            animation: slideInRight 0.5s ease;
+            font-weight: 600;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(450px);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo-gran-rey.png" alt="Gran Rey Ministerio" class="logo-img" id="logo-oficial">
+                <div class="logo-text">
+                    <span class="primary">GRAN REY</span>
+                    <span class="secondary">MINISTERIO</span>
+                </div>
+            </a>
+            <div class="sede-selector">
+                <label for="sede-select">📍 Sede:</label>
+                <select id="sede-select">
+                    <option value="madrid">Madrid</option>
+                    <option value="burgos">Burgos</option>
+                    <option value="aranda">Aranda de Duero</option>
+                    <option value="paris">París</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenidos a Casa</h1>
+            <p>Un lugar donde tu familia encuentra propósito, comunidad y crecimiento espiritual</p>
+            <div class="cta-buttons">
+                <a href="#nuevo-aqui" class="btn btn-primary">Visítanos</a>
+                <a href="#ong" class="btn btn-secondary">Donar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVO AQUÍ -->
+    <section id="nuevo-aqui" class="nuevo-aqui">
+        <h2 class="section-title">¿Nuevo Aquí?</h2>
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="info-icon">🏠</div>
+                <h3>¿Qué Esperar?</h3>
+                <p>Una comunidad cálida y acogedora donde todos son bienvenidos. Predicaciones relevantes, adoración genuina y un ambiente familiar donde puedes crecer espiritualmente.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">📍</div>
+                <h3>¿Dónde Estamos?</h3>
+                <p>Tenemos sedes en Madrid, Burgos, Aranda de Duero y París. Encuentra la más cercana a ti y ven a conocernos. ¡Te estamos esperando!</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">💬</div>
+                <h3>¿Cómo Conectar?</h3>
+                <p>Únete a uno de nuestros grupos pequeños, participa en nuestros eventos semanales o contáctanos directamente. Estamos aquí para acompañarte.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMUNIDAD -->
+    <section class="comunidad">
+        <h2 class="section-title">Nuestra Comunidad</h2>
+        <div class="comunidad-content">
+            <div class="comunidad-img">
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80" alt="Comunidad reunida">
+                <div class="comunidad-overlay">Adoración Juntos</div>
+            </div>
+            <div class="comunidad-img">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Grupos pequeños">
+                <div class="comunidad-overlay">Grupos Pequeños</div>
+            </div>
+            <div class="comunidad-img">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80" alt="Servicio comunitario">
+                <div class="comunidad-overlay">Servicio y Amor</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREDICACIONES -->
+    <section class="predicaciones">
+        <h2 class="section-title">Últimas Predicaciones</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800&q=80');">
+                    <div class="play-icon">▶️</div>
+                </div>
+                <div class="video-info">
+                    <h3>Sede Madrid</h3>
+                    <p>Mensaje reciente: "Viviendo en el Reino" - Un llamado a experimentar la presencia de Dios en nuestra vida diaria.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80');">
+                    <div class="play-icon">▶️</div>
+                </div>
+                <div class="video-info">
+                    <h3>Sede Burgos</h3>
+                    <p>Mensaje reciente: "El Poder de la Fe" - Descubre cómo la fe transforma nuestras circunstancias.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=800&q=80');">
+                    <div class="play-icon">▶️</div>
+                </div>
+                <div class="video-info">
+                    <h3>Sede París</h3>
+                    <p>Message récent: "L'Amour du Roi" - L'amour de Dieu qui transforme nos vies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN LMS -->
+    <section class="lms">
+        <h2 class="section-title">Ruta de Crecimiento Espiritual</h2>
+        <div class="lms-container">
+            
+            <!-- NIVEL 1 -->
+            <div class="nivel-group">
+                <h3 class="nivel-title">
+                    <span class="nivel-badge">Nivel 1</span>
+                    Fundamentos
+                </h3>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h4>Primeros Pasos</h4>
+                        <p>Introducción a la vida cristiana y los fundamentos de nuestra fe.</p>
+                        <span class="course-duration">⏱ 4 semanas</span>
+                    </div>
+                    <div class="course-card">
+                        <h4>Principios del Reino</h4>
+                        <p>Descubre cómo vivir bajo los principios del Reino de Dios.</p>
+                        <span class="course-duration">⏱ 6 semanas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NIVEL 2 -->
+            <div class="nivel-group">
+                <h3 class="nivel-title">
+                    <span class="nivel-badge">Nivel 2</span>
+                    Madurez Espiritual
+                </h3>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h4>Vida de Oración</h4>
+                        <p>Profundiza tu relación con Dios a través de la oración efectiva.</p>
+                        <span class="course-duration">⏱ 8 semanas</span>
+                    </div>
+                    <div class="course-card">
+                        <h4>Identidad en Cristo</h4>
+                        <p>Comprende quién eres en Cristo y vive desde esa identidad.</p>
+                        <span class="course-duration">⏱ 6 semanas</span>
+                    </div>
+                    <div class="course-card">
+                        <h4>Mayordomía y Servicio</h4>
+                        <p>Aprende a servir con excelencia y administrar tus dones.</p>
+                        <span class="course-duration">⏱ 5 semanas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NIVEL 3 - ECO -->
+            <div class="nivel-group">
+                <h3 class="nivel-title">
+                    <span class="nivel-badge">Nivel 3</span>
+                    ECO - Escuela de Capacitación de Obreros
+                </h3>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h4>ECO Nivel 1</h4>
+                        <p>Fundamentos bíblicos y teológicos para el ministerio.</p>
+                        <span class="course-duration">⏱ 3 meses</span>
+                    </div>
+                    <div class="course-card">
+                        <h4>ECO Nivel 2</h4>
+                        <p>Liderazgo, predicación y cuidado pastoral efectivo.</p>
+                        <span class="course-duration">⏱ 4 meses</span>
+                    </div>
+                    <div class="course-card">
+                        <h4>ECO Nivel 3</h4>
+                        <p>Ministerio avanzado, plantación de iglesias y discipulado.</p>
+                        <span class="course-duration">⏱ 5 meses</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN ONG -->
+    <section id="ong" class="ong">
+        <div class="ong-container">
+            <div class="ong-intro">
+                <h2>Juntos Transformando Historias</h2>
+                <p>Tu generosidad hace posible que muchas vidas sean transformadas. Únete a nosotros en esta misión de amor y esperanza.</p>
+            </div>
+            <div class="form-container">
+                <form id="ong-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono *</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-ayuda">¿Cómo Deseas Ayudar? *</label>
+                        <select id="tipo-ayuda" name="tipo-ayuda" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="padrino">Ser Padrino</option>
+                            <option value="donacion">Hacer una Donación</option>
+                            <option value="voluntario">Ser Voluntario</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Compártenos tu motivación o cualquier pregunta que tengas..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Contacto de la Sede -->
+            <div class="footer-section">
+                <h3>Contáctanos</h3>
+                <address id="sede-info">
+                    <p><strong id="sede-nombre">Sede Madrid</strong></p>
+                    <p id="sede-direccion">Calle Ejemplo 123, 28001 Madrid</p>
+                    <p id="sede-telefono">📞 +34 91 123 4567</p>
+                    <p id="sede-email">📧 madrid@ministeriogranrey.org</p>
+                    <p><strong>Horarios:</strong></p>
+                    <p id="sede-horarios">Domingos: 10:00 y 18:00<br>Miércoles: 19:30</p>
+                </address>
+            </div>
+
+            <!-- Mapa -->
+            <div class="footer-section">
+                <h3>Encuéntranos</h3>
+                <div class="map-container">
+                    🗺️
+                </div>
+            </div>
+
+            <!-- Peticiones de Oración -->
+            <div class="footer-section">
+                <h3>Peticiones de Oración</h3>
+                <form id="oracion-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Tu nombre" required style="margin-bottom: 15px;">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Comparte tu petición..." required style="min-height: 100px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Enviar Petición</button>
+                </form>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Facebook">📘</a>
+                    <a href="#" class="social-icon" title="Instagram">📸</a>
+                    <a href="#" class="social-icon" title="YouTube">▶️</a>
+                    <a href="#" class="social-icon" title="Email">✉️</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ministerio Gran Rey. Todos los derechos reservados. Hecho con ❤️ para la gloria de Dios.</p>
+        </div>
+    </footer>
+
+    <!-- Mensaje de Éxito -->
+    <div id="success-message" class="success-message">
+        ✅ ¡Formulario enviado exitosamente!
+    </div>
+
+    <script>
+        // ==================== CARGAR LOGO DESDE ARCHIVO LOCAL ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoImg = document.getElementById('logo-oficial');
+            // Si el logo local no carga, usar el de uploads
+            logoImg.onerror = function() {
+                this.src = '/mnt/user-data/uploads/GR2-01.png';
+            };
+        });
+
+        // ==================== DATOS DE LAS SEDES ====================
+        const sedesData = {
+            madrid: {
+                nombre: 'Sede Madrid',
+                direccion: 'Calle Ejemplo 123, 28001 Madrid',
+                telefono: '📞 +34 91 123 4567',
+                email: '📧 madrid@ministeriogranrey.org',
+                horarios: 'Domingos: 10:00 y 18:00<br>Miércoles: 19:30'
+            },
+            burgos: {
+                nombre: 'Sede Burgos',
+                direccion: 'Plaza Mayor 45, 09001 Burgos',
+                telefono: '📞 +34 947 123 456',
+                email: '📧 burgos@ministeriogranrey.org',
+                horarios: 'Domingos: 11:00 y 19:00<br>Jueves: 20:00'
+            },
+            aranda: {
+                nombre: 'Sede Aranda de Duero',
+                direccion: 'Avenida del Vino 78, 09400 Aranda de Duero',
+                telefono: '📞 +34 947 987 654',
+                email: '📧 aranda@ministeriogranrey.org',
+                horarios: 'Domingos: 10:30 y 18:30<br>Viernes: 19:30'
+            },
+            paris: {
+                nombre: 'Sede París',
+                direccion: '12 Rue de la Paix, 75002 Paris, France',
+                telefono: '📞 +33 1 23 45 67 89',
+                email: '📧 paris@ministeriogranrey.org',
+                horarios: 'Dimanches: 10:00 et 17:00<br>Mercredis: 19:00'
+            }
+        };
+
+        // ==================== CAMBIO DE SEDE ====================
+        const sedeSelect = document.getElementById('sede-select');
+        
+        function actualizarSedeInfo() {
+            const sedeSeleccionada = sedeSelect.value;
+            const sede = sedesData[sedeSeleccionada];
+            
+            document.getElementById('sede-nombre').textContent = sede.nombre;
+            document.getElementById('sede-direccion').textContent = sede.direccion;
+            document.getElementById('sede-telefono').textContent = sede.telefono;
+            document.getElementById('sede-email').textContent = sede.email;
+            document.getElementById('sede-horarios').innerHTML = sede.horarios;
+        }
+
+        sedeSelect.addEventListener('change', actualizarSedeInfo);
+
+        // ==================== FORMULARIO ONG ====================
+        const ongForm = document.getElementById('ong-form');
+        const successMessage = document.getElementById('success-message');
+
+        ongForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                tipoAyuda: document.getElementById('tipo-ayuda').value,
+                mensaje: document.getElementById('mensaje').value
+            };
+            
+            console.log('Datos del formulario ONG:', formData);
+            
+            successMessage.style.display = 'block';
+            successMessage.textContent = '✅ ¡Gracias por tu interés! Te contactaremos pronto.';
+            
+            ongForm.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 4000);
+        });
+
+        // ==================== FORMULARIO DE ORACIÓN ====================
+        const oracionForm = document.getElementById('oracion-form');
+
+        oracionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            console.log('Petición de oración enviada');
+            
+            successMessage.style.display = 'block';
+            successMessage.textContent = '🙏 Tu petición ha sido recibida. Estaremos orando por ti.';
+            
+            oracionForm.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 4000);
+        });
+
+        // ==================== SMOOTH SCROLL ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ==================== NAVBAR SCROLL EFFECT ====================
+        let lastScroll = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // ==================== INICIALIZACIÓN ====================
+        window.addEventListener('DOMContentLoaded', () => {
+            actualizarSedeInfo();
+        });
+    </script>
+
+</body>
+</html>
